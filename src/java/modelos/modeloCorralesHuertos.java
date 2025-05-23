@@ -7,8 +7,7 @@ import sqlgogo.conexionesActivasXd;
 public class modeloCorralesHuertos {
     
     private conexionesActivasXd objConexion;
-    private boolean datito;
-    public modeloCorralesHuertos() {
+    public modeloCorralesHuertos() throws SQLException {
         objConexion = new conexionesActivasXd();
     }
 
@@ -18,8 +17,7 @@ public class modeloCorralesHuertos {
         datitosxd.add(contenido);
         datitosxd.add(humedad);
         
-        objConexion.hacerConexion();
-        datito = objConexion.guardarDatos(datitosxd);
+        boolean datito = objConexion.guardarDatos(datitosxd);
         return datito;
     }
 }

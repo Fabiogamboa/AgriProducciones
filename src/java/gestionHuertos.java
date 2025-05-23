@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(urlPatterns = {"/gestionHuertos"})
+@WebServlet(name = "gestionarHuertos")
 public class gestionHuertos extends HttpServlet {
     
     private modeloCorralesHuertos objModeloCorrales;
@@ -30,19 +30,28 @@ public class gestionHuertos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tipoContenedorxd = request.getParameter("huerto-corral");
-        String tipoDeContenidoHuerto = request.getParameter("animal-vegetal");
+        String tipoContenedorxd = request.getParameter("huertocorral");
+        String tipoDeContenidoHuerto = request.getParameter("animalvegetal");
         String humedadSuelo = request.getParameter("humedad");
         xdprueba = false;
-        objModeloCorrales = new modeloCorralesHuertos();
         try {
-            xdprueba = objModeloCorrales.guardarInfo(tipoContenedorxd,tipoDeContenidoHuerto,humedadSuelo);
+            objModeloCorrales = new modeloCorralesHuertos();
         } catch (SQLException ex) {
             Logger.getLogger(gestionHuertos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (xdprueba == false){
+        try {
+            xdprueba = objModeloCorrales.guardarInfo(tipoContenedorxd,tipoDeContenidoHuerto,humedadSuelo);
+            if (xdprueba == true){
+            request.setAttribute("gogobien", "tabien");
+            request.getRequestDispatcher("gestionarHuertosCorrales.jsp").forward(request, response);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(gestionHuertos.class.getName()).log(Level.SEVERE, null, ex);
+            if (xdprueba == false){
             request.setAttribute("error", "no se puede guardar en base de datos, reisa xd");
             request.getRequestDispatcher("gestionarHuertosCorrales.jsp").forward(request, response);
         }
+        }
+        
     }
 }

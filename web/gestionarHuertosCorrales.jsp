@@ -23,7 +23,7 @@
         <%
             String error = (String) request.getAttribute("error");
             String gogobien = (String) request.getAttribute("gogobien");
-            if (error != null && !error.isEmpty() || gogobien != null && !gogobien.isEmpty()) {
+            if (error != null && !error.isEmpty() || gogobien != null) {
         %>
             <p class="mensajitoMaloPiumPium"><%= error %></p>
             <p class="mensajitoBuenoPiumPium"><%=gogobien%></p>
@@ -33,11 +33,11 @@
         <form action="gestionHuertos" method="post">
             <div class="formulariogogo">
                 <label>Digite el nombre del huerto o corral</label>
-                <input type="text" id="username" name="huerto-corral" required>
+                <input type="text" id="username" name="huertocorral" required>
             </div>
             <div class="formulariogogo">
                 <label for="password">Tipo de animal 0 vegetal</label>
-                <input type="text" id="password" name="animal-vegetal" required>
+                <input type="text" id="password" name="animalvegetal" required>
             </div>
             <div class="formulariogogo">
                 <label for="password">Humedad del terreno</label>
