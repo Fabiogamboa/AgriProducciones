@@ -8,7 +8,7 @@ public class modeloCorralesHuertos {
     
     private conexionesActivasXd objConexion;
     public modeloCorralesHuertos() throws SQLException {
-        objConexion = new conexionesActivasXd();
+        
     }
 
     public boolean guardarInfo(String tipoContenedor, String contenido, String humedad) throws SQLException {
@@ -16,6 +16,7 @@ public class modeloCorralesHuertos {
         datitosxd.add(tipoContenedor);
         datitosxd.add(contenido);
         datitosxd.add(humedad);
+        objConexion = new conexionesActivasXd();
         
         boolean datito = objConexion.guardarDatos(datitosxd);
         return datito;
