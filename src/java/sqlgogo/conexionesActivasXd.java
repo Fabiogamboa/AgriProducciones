@@ -12,23 +12,26 @@ public class conexionesActivasXd {
     String clave;
     Connection conex;
 
-    public conexionesActivasXd() {
+    public conexionesActivasXd() throws SQLException {
         usuario = "root";
         url = "jdbc:mysql://localhost:3306/agriproducciones";
         clave = "";
         conex = null;
-    }
-
-    public void hacerConexion() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("No se encontró el driver JDBC de MySQL", e);
+        }
         conex = DriverManager.getConnection(url, usuario, clave);
-        System.out.println("Conexión exitosa: " + conex);
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxxxxxx");
     }
 
-    public boolean guardarDatos(ArrayList datitos) throws SQLException {
+
+    public boolean guardarDatos(ArrayList<String> datitos) throws SQLException {
         if (conex == null) {
             throw new SQLException("La conexion no existe aun xd.");
         }
-        String sql = "INSERT INTO datoshuertos (huerto, contenido, humedad ) VALUES (?, ?; ?)";
+        String sql = "INSERT INTO datoshuertos (huerto, contenido, humedad ) VALUES (?, ?, ?)";
         try (PreparedStatement pstmt = conex.prepareStatement(sql)) {
             pstmt.setString(1, (String) datitos.get(0));
             pstmt.setString(2, (String) datitos.get(1));

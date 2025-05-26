@@ -9,7 +9,9 @@
     <style>
         .bodyPersonalizao{
             font-family: "Times-new-roman";
-            background-color: #fff;
+            background-image: url("https://img.freepik.com/vector-premium/fondo-pixel-art-granja-otonal_23-2149597070.jpg");
+            background-size: cover;
+            background-repeat:no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,31 +19,31 @@
             margin: 0;
         }
     </style>
-    <body>
+    <body class = "bodyPersonalizao">
     <div class="contenedorDatitos">
         <h1>Iniciar Sesión</h1>
         <%
             String error = (String) request.getAttribute("error");
             String gogobien = (String) request.getAttribute("gogobien");
-            if (error != null && !error.isEmpty() || gogobien != null && !gogobien.isEmpty()) {
+            if (error != null && !error.isEmpty() || gogobien != null) {
         %>
             <p class="mensajitoMaloPiumPium"><%= error %></p>
             <p class="mensajitoBuenoPiumPium"><%=gogobien%></p>
         <%
             }
         %>
-        <form action="gestionHuertos" method="post">
+       <form action="${pageContext.request.contextPath}/gesti" method="post">
             <div class="formulariogogo">
                 <label>Digite el nombre del huerto o corral</label>
-                <input type="text" id="username" name="huerto-corral" required>
+                <input type="text" id="username" name="huertocorral" required>
             </div>
             <div class="formulariogogo">
                 <label for="password">Tipo de animal 0 vegetal</label>
-                <input type="text" id="password" name="animal-vegetal" required>
+                <input type="text" id="password" name="animalvegetal" required>
             </div>
             <div class="formulariogogo">
                 <label for="password">Humedad del terreno</label>
-                <input type="text" id="password" name="" required>
+                <input type="text" id="password" name="humedad" required>
             </div>
             <button type="submit">crear</button>
         </form>
