@@ -8,7 +8,7 @@
     </head>
     <style>
         .bodyPersonalizao{
-            font-family: "Times-new-roman";
+            font-family: "Comic Sans MS";
             background-image: url("https://img.freepik.com/vector-premium/fondo-pixel-art-granja-otonal_23-2149597070.jpg");
             background-size: cover;
             background-repeat:no-repeat;
@@ -25,9 +25,12 @@
         <%
             String error = (String) request.getAttribute("error");
             String gogobien = (String) request.getAttribute("gogobien");
-            if (error != null && !error.isEmpty() || gogobien != null) {
+            if (error != null && !error.isEmpty()) {
         %>
             <p class="mensajitoMaloPiumPium"><%= error %></p>
+        <%
+            } else if (gogobien != null && !gogobien.isEmpty()){
+        %>
             <p class="mensajitoBuenoPiumPium"><%=gogobien%></p>
         <%
             }

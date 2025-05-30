@@ -77,10 +77,10 @@ body {
             margin-bottom: 20px;
         }
         .mensajitoBuenoPiumPium{
-            color: green;
+            color: white;
             margin-top: 15px;
             font-size: 0.9em;
-            background-color: #f8d7da; 
+            background-color:green;
             border: 1px solid #f5c6cb;
             padding: 10px;
             border-radius: 8px;

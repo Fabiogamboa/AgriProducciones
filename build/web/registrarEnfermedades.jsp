@@ -18,6 +18,23 @@
             min-height: 100vh;
             margin: 0;
         }
+          select {
+             width: 100%;
+                padding: 10px;
+                border: 2px solid #4CAF50;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                font-size: 16px;
+                color: #333;
+                outline: none;
+                transition: border-color 0.3s;
+        }
+
+        select:focus {
+          border-color: #2e7d32;
+          background-color: #fff;
+        }
+
     </style>
     <body class = "bodyPersonalizao">
     <div class="contenedorDatitos">
@@ -35,17 +52,17 @@
         <%
             }
         %>
-       <form action="${pageContext.request.contextPath}/gesti" method="post">
+       <form action="${pageContext.request.contextPath}/gesti2" method="post">
             <div class="formulariogogo">
-                <label>Digite el nombre del huerto o corral</label>
+                <label>Tipo de enfermedad</label>
                 <input type="text" id="username" name="huertocorral" required>
             </div>
             <div class="formulariogogo">
-                <label for="password">Tipo de animal 0 vegetal</label>
+                <label for="password">Sintomas observados</label>
                 <input type="text" id="password" name="animalvegetal" required>
             </div>
             <div class="formulariogogo">
-                <label for="password">Humedad del terreno</label>
+                <label for="password">Fecha de detección</label>
                 <input type="text" id="password" name="humedad" required>
             </div>
             <button type="submit">crear</button>
