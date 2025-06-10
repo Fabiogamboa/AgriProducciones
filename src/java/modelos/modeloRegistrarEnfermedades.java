@@ -8,17 +8,17 @@ public class modeloRegistrarEnfermedades {
     
     private conexionesActivasXd objConexion;
     public modeloRegistrarEnfermedades() throws SQLException {
-        
     }
 
-    public boolean guardarInfo(String tipoContenedor, String contenido, String humedad) throws SQLException {
+    public boolean guardarInfo(String tipoEnfermedad, String sintomas, String fecha) throws SQLException {
         ArrayList<String> datitosxd = new ArrayList<>();
-        datitosxd.add(tipoContenedor);
-        datitosxd.add(contenido);
-        datitosxd.add(humedad);
+        datitosxd.add(tipoEnfermedad);
+        datitosxd.add(sintomas);
+        datitosxd.add(fecha);
+        
         objConexion = new conexionesActivasXd();
         
-        boolean datito = objConexion.guardarDatos(datitosxd);
+        boolean datito = objConexion.guardarDatosEnfermedades(datitosxd);
         return datito;
     }
 }

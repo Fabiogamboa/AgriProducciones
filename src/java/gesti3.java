@@ -14,39 +14,37 @@ public class gesti3 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
 
-        String tipoContenedorxd = request.getParameter("huertocorral");
-        String tipoDeContenidoHuerto = request.getParameter("animalvegetal");
         String humedadSuelo = request.getParameter("humedad");
+        String fechaDato = request.getParameter("fecha");
+        String metodo = request.getParameter("metodoRiego");
         boolean xdprueba = false;
         String mensaje = null;
 
         try {
-            modeloControlHumedad objModeloCorrales = new modelos.modeloControlHumedad();
-            xdprueba = objModeloCorrales.guardarInfo(tipoContenedorxd, tipoDeContenidoHuerto, humedadSuelo);
+            modeloControlHumedad objModelohumedad = new modelos.modeloControlHumedad();
+            xdprueba = objModelohumedad.guardarInfo(humedadSuelo, fechaDato, metodo);
 
             if (xdprueba) {
-                mensaje = "¡Datos guardados correctamente!3";
+                mensaje = "¡Datos guardados correctamente!";
                 request.setAttribute("gogobien", mensaje);
             } else {
-                mensaje = "No se pudo guardar la información.3";
+                mensaje = "No se pudo guardar la información.";
                 request.setAttribute("error", mensaje);
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(gesti.class.getName()).log(Level.SEVERE, null, ex);
-            mensaje = "No se puede guardar en base de datos, revisa los datos.3";
+            Logger.getLogger(gesti3.class.getName()).log(Level.SEVERE, null, ex);
+            mensaje = "No se puede guardar en base de datos, revisa los datos.";
             request.setAttribute("error", mensaje);
         }
-
-        request.getRequestDispatcher("controlHumedad.jsp").forward(request, response);
-    }
+    request.getRequestDispatcher("controlHumedad.jsp").forward(request, response);
+}
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Puedes redirigir al JSP directamente si quieres mostrar el formulario
         request.getRequestDispatcher("controlHumedad.jsp").forward(request, response);
     }
 }

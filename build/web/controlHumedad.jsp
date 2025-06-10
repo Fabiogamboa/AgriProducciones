@@ -38,7 +38,7 @@
     </style>
     <body class = "bodyPersonalizao">
     <div class="contenedorDatitos">
-        <h1>Iniciar Sesión</h1>
+        <h1>Registrar Humedad</h1>
         <%
             String error = (String) request.getAttribute("error");
             String gogobien = (String) request.getAttribute("gogobien");
@@ -55,15 +55,15 @@
        <form action="${pageContext.request.contextPath}/gesti3" method="post">
             <div class="formulariogogo">
                 <label>Nivel de humedad (%)</label>
-                <input type="text" id="username" name="huertocorral" required>
+                <input type="text" id="username" name="humedad" required>
             </div>
             <div class="formulariogogo">
                 <label for="password">Fecha y hora de medición</label>
-                <input type="text" id="password" name="animalvegetal" required>
+                <input type="date" id="password" name="fecha" required>
             </div>
             <div class="formulariogogo">
                 <label for="password">Método de riego utilizado</label>
-                <input type="text" id="password" name="humedad" required>
+                <input type="text" id="password" name="metodoRiego" required>
             </div>
             <button type="submit">crear</button>
         </form>

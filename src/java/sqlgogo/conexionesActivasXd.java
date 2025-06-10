@@ -45,4 +45,43 @@ public class conexionesActivasXd {
             throw e;
         }
     }
+    
+     public boolean guardarDatosEnfermedades(ArrayList<String> datos) throws SQLException {
+        if (conex == null) {
+            throw new SQLException("La conexión no existe :v");
+        }
+    
+        String sql = "INSERT INTO enfermedad (tipo_enfermedad, sintomas, fecha) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = conex.prepareStatement(sql)) {
+            pstmt.setString(1, datos.get(0));
+            pstmt.setString(2, datos.get(1));
+            pstmt.setString(3, datos.get(2));
+            pstmt.executeUpdate();
+            System.out.println("Datos de enfermedad guardados correctamente.");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error al guardar datos de enfermedad: " + e.getMessage());
+            throw e;
+        }
+    }
+     
+     
+    public boolean guardarDatosHumedad(ArrayList<String> datos) throws SQLException {
+        if (conex == null) {
+            throw new SQLException("La conexión no existe :v");
+        }
+    
+        String sql = "INSERT INTO humedadCampo (humedad, fecha, metodoRiego) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = conex.prepareStatement(sql)) {
+            pstmt.setString(1, datos.get(0));
+            pstmt.setString(2, datos.get(1));
+            pstmt.setString(3, datos.get(2));
+            pstmt.executeUpdate();
+            System.out.println("Datos de humedad guardados correctamente.");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error al guardar datos de humedad :v : " + e.getMessage());
+            throw e;
+        }
+    }
 }

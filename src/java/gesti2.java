@@ -16,27 +16,27 @@ public class gesti2 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String tipoContenedorxd = request.getParameter("huertocorral");
-        String tipoDeContenidoHuerto = request.getParameter("animalvegetal");
-        String humedadSuelo = request.getParameter("humedad");
+        String enfermedad = request.getParameter("tipoEnfermedad");
+        String sintomas = request.getParameter("sintomasObs");
+        String fecha = request.getParameter("fecha");
         boolean xdprueba = false;
         String mensaje = null;
 
         try {
-            modeloRegistrarEnfermedades objModeloCorrales = new modelos.modeloRegistrarEnfermedades();
-            xdprueba = objModeloCorrales.guardarInfo(tipoContenedorxd, tipoDeContenidoHuerto, humedadSuelo);
+            modeloRegistrarEnfermedades objModeloEnfermedades = new modelos.modeloRegistrarEnfermedades();
+            xdprueba = objModeloEnfermedades.guardarInfo(enfermedad, sintomas, fecha);
 
             if (xdprueba) {
-                mensaje = "¡Datos guardados correctamente2!";
+                mensaje = "¡Datos guardados correctamente!";
                 request.setAttribute("gogobien", mensaje);
             } else {
-                mensaje = "No se pudo guardar la información.2";
+                mensaje = "No se pudo guardar la información.";
                 request.setAttribute("error", mensaje);
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(gesti.class.getName()).log(Level.SEVERE, null, ex);
-            mensaje = "No se puede guardar en base de datos, revisa los datos.2";
+            Logger.getLogger(gesti2.class.getName()).log(Level.SEVERE, null, ex);
+            mensaje = "No se puede guardar en base de datos, revisa los datos.";
             request.setAttribute("error", mensaje);
         }
 
@@ -46,7 +46,6 @@ public class gesti2 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Puedes redirigir al JSP directamente si quieres mostrar el formulario
         request.getRequestDispatcher("registrarEnfermedades.jsp").forward(request, response);
     }
 }
