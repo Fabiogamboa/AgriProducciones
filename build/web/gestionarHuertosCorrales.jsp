@@ -18,6 +18,9 @@
             min-height: 100vh;
             margin: 0;
         }
+        #boton_config{
+            margin-top: 10px;
+        }
     </style>
     <body class = "bodyPersonalizao">
     <div class="contenedorDatitos">
@@ -48,7 +51,8 @@
                 <label for="password">Humedad del terreno</label>
                 <input type="text" id="password" name="humedad" required>
             </div>
-            <button type="submit">crear</button>
+            <button type="submit">Crear</button>
+             <button id="boton_config" onclick="location.href='paginaPrincipal.jsp'">Atrás</button>
         </form>
     </div>
     </body>

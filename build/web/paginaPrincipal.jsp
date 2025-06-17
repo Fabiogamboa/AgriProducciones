@@ -68,6 +68,7 @@
             <button onclick="location.href='gestionarHuertosCorrales.jsp'">Crear Huerto/Corral</button>
             <button onclick="location.href='registrarEnfermedades.jsp'">Registrar Enfermedades</button>
             <button onclick="location.href='controlHumedad.jsp'">Control de Humedad del Terreno</button>
+            <button onclick="location.href='buscar.jsp'">Buscar</button>
         </div>
     </div>
 </body>

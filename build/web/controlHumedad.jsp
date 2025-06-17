@@ -34,7 +34,9 @@
           border-color: #2e7d32;
           background-color: #fff;
         }
-
+         #boton_config{
+            margin-top: 10px;
+        }
     </style>
     <body class = "bodyPersonalizao">
     <div class="contenedorDatitos">
@@ -65,7 +67,8 @@
                 <label for="password">Método de riego utilizado</label>
                 <input type="text" id="password" name="humedad" required>
             </div>
-            <button type="submit">crear</button>
+            <button type="submit">Crear</button>
+            <button id="boton_config" onclick="location.href='paginaPrincipal.jsp'">Atrás</button>
         </form>
     </div>
     </body>

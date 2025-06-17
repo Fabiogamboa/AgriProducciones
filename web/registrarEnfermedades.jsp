@@ -34,11 +34,18 @@
           border-color: #2e7d32;
           background-color: #fff;
         }
+         #boton_config{
+            margin-top: 10px;
+        }
 
     </style>
     <body class = "bodyPersonalizao">
     <div class="contenedorDatitos">
+<<<<<<< Updated upstream
         <h1>Iniciar Sesión</h1>
+=======
+        <h1>Registrar Enfermedades</h1>
+>>>>>>> Stashed changes
         <%
             String error = (String) request.getAttribute("error");
             String gogobien = (String) request.getAttribute("gogobien");
@@ -65,7 +72,8 @@
                 <label for="password">Fecha de detección</label>
                 <input type="text" id="password" name="humedad" required>
             </div>
-            <button type="submit">crear</button>
+            <button type="submit">Crear</button>
+            <button id="boton_config" onclick="location.href='paginaPrincipal.jsp'">Atrás</button>
         </form>
     </div>
     </body>
