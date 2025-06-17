@@ -86,24 +86,31 @@
         <div class="container">
         <h1>Informacion</h1>
      <ol>
-    <%
-        session = request.getSession(false);
-        ArrayList<String> productos = (ArrayList<String>) session.getAttribute("datos_lista");
+   <%
+    session = request.getSession(false);
+    ArrayList<String> productos = (ArrayList<String>) session.getAttribute("datos_lista");
 
-        if (productos != null) {
-            for (int i = 0; i < productos.size(); i += 3) {
-    %>
-        <li><strong>Registro <%= (i / 3 + 1) %>:</strong>
-            <ul>
-                <% if (i < productos.size()) { %><li><%= productos.get(i) %></li><% } %>
-                <% if (i + 1 < productos.size()) { %><li><%= productos.get(i + 1) %></li><% } %>
-                <% if (i + 2 < productos.size()) { %><li><%= productos.get(i + 2) %></li><% } %>
-            </ul>
-        </li>
-    <%
-            }
+    if (productos != null) {
+        for (int i = 0; i < productos.size(); i += 3) {
+%>
+    <li><strong>Registro <%= (i / 3 + 1) %>:</strong>
+        <ul>
+            <% if (i < productos.size()) { %><li><%= productos.get(i) %></li><% } %>
+            <% if (i + 1 < productos.size()) { %><li><%= productos.get(i + 1) %></li><% } %>
+            <% if (i + 2 < productos.size()) { %><li><%= productos.get(i + 2) %></li><% } %>
+        </ul>
+
+        <!-- Botón para eliminar este registro -->
+        <form method="post" action="Servlet2" onsubmit="return confirm('¿Estás seguro de eliminar este registro?');">
+            <input type="hidden" name="id" value="<%= productos.get(i) %>">
+            <button type="submit">Eliminar</button>
+        </form>
+    </li>
+<%
         }
-    %>
+    }
+%>
+
 </ol>
 
 

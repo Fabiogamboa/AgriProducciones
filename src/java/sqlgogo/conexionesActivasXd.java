@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.sql.*;
 
 public class conexionesActivasXd {
+
+    public static Connection getConexion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     String usuario;
     String url;
     String clave;
@@ -46,9 +50,7 @@ public class conexionesActivasXd {
             throw e;
         }
     }
-<<<<<<< Updated upstream
-=======
-    
+
      public boolean guardarDatosEnfermedades(ArrayList<String> datos) throws SQLException {
         if (conex == null) {
             throw new SQLException("La conexión no existe :v");
@@ -131,5 +133,44 @@ public class conexionesActivasXd {
             System.out.println("ERROR");
         }
     }
->>>>>>> Stashed changes
+    // Elimina un huerto por nombre
+public void eliminarHuerto(String huerto) throws SQLException {
+    if (conex == null) {
+        throw new SQLException("No hay conexión establecida.");
+    }
+    String sql = "DELETE FROM datoshuertos WHERE huerto = ?";
+    try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+        stmt.setString(1, huerto);
+        stmt.executeUpdate();
+        System.out.println("Huerto eliminado correctamente.");
+    }
+}
+
+// Elimina una enfermedad por tipo
+public void eliminarEnfermedad(String tipoEnfermedad) throws SQLException {
+    if (conex == null) {
+        throw new SQLException("No hay conexión establecida.");
+    }
+    String sql = "DELETE FROM enfermedad WHERE tipo_enfermedad = ?";
+    try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+        stmt.setString(1, tipoEnfermedad);
+        stmt.executeUpdate();
+        System.out.println("Enfermedad eliminada correctamente.");
+    }
+}
+
+// Elimina un registro de humedad por valor
+public void eliminarHumedad(String humedad) throws SQLException {
+    if (conex == null) {
+        throw new SQLException("No hay conexión establecida.");
+    }
+    String sql = "DELETE FROM humedadCampo WHERE humedad = ?";
+    try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+        stmt.setString(1, humedad);
+        stmt.executeUpdate();
+        System.out.println("Registro de humedad eliminado correctamente.");
+    }
+}
+
+
 }
