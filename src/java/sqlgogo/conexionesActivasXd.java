@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class conexionesActivasXd {
@@ -65,7 +66,6 @@ public class conexionesActivasXd {
         }
     }
      
-     
     public boolean guardarDatosHumedad(ArrayList<String> datos) throws SQLException {
         if (conex == null) {
             throw new SQLException("La conexión no existe :v");
@@ -84,4 +84,5 @@ public class conexionesActivasXd {
             throw e;
         }
     }
+    
 }
